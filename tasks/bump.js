@@ -152,7 +152,8 @@ module.exports = function(grunt) {
 
       exec('git commit ' + opts.commitFiles.join(' ') + ' -m "' + commitMessage + '"', function(err, stdout, stderr) {
         if (err) {
-          grunt.fatal('Can not create the commit:\n  ' + stderr);
+          var errMsg = stderr || stdout;
+          grunt.fatal('Can not create the commit:\n  ' + errMsg);
         }
         grunt.log.ok('Committed as "' + commitMessage + '"');
         next();
@@ -167,7 +168,8 @@ module.exports = function(grunt) {
 
       exec('git tag -a ' + tagName + ' -m "' + tagMessage + '"' , function(err, stdout, stderr) {
         if (err) {
-          grunt.fatal('Can not create the tag:\n  ' + stderr);
+          var errMsg = stderr || stdout;
+          grunt.fatal('Can not create the tag:\n  ' + errMsg);
         }
         grunt.log.ok('Tagged as "' + tagName + '"');
         next();
