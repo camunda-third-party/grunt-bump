@@ -65,7 +65,7 @@ module.exports = function(grunt) {
       queue.shift()();
     };
     var runIf = function(condition, behavior) {
-      if (condition) {
+      if (condition === true) {
         queue.push(behavior);
       }
     };
